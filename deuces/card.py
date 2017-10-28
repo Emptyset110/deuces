@@ -185,18 +185,20 @@ class Card ():
         # if we need to color red
         s = Card.PRETTY_SUITS[suit_int]
         if color and suit_int in Card.PRETTY_REDS:
-            s = colored(s, "red")
+            s = colored(s.decode(), "red")
+        else:
+            s = s.decode()
 
         r = Card.STR_RANKS[rank_int]
 
-        return " [ " +r+ " " +s+ " ] "
+        return " [ " + r + " " + s + " ] "
 
     @staticmethod
     def print_pretty_card(card_int):
         """
         Expects a single integer as input
         """
-        print Card.int_to_pretty_str(card_int)
+        print(Card.int_to_pretty_str(card_int))
 
     @staticmethod
     def print_pretty_cards(card_ints):
@@ -211,4 +213,4 @@ class Card ():
             else:
                 output += Card.int_to_pretty_str(c) + " "
     
-        print output
+        print(output)
